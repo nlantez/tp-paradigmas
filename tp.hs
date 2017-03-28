@@ -18,7 +18,7 @@ runTests = hspec $do
 		it "mezclar una Hierba mala  y una alcachofa 1 debe crear una hierba pero no producir el mismo efecto que una hierba buena" $do
 			mezclarHierbas hierbaMala (alcachofa 1) jerry `shouldNotBe` hierbaMala jerry
 		it  "el medicamento ratisalil combina una Hierba hierbaMala y una Hierba Zort que produce los mismos resultados que una Hierba Zort" $do
-			medicamento jerry [hierbaZort,hierbaMala] `shouldBe` medicamento jerry [hierbaZort]
+			medicamento jerry ratisalil `shouldBe` medicamento jerry [hierbaZort]
 		it "el medicamento ponds anti age combina una alcachofa de 10 con 3 hierbas buenas que se le aplica a jerry quedando con edad = 9.5, peso = 1.8 y altura = 0.3" $do
 			medicamento jerry pondsAntiAge `shouldBe` CRaton 9.5 1.8 0.3
 		it "aplicarle un tratamiento contra la antiguedad a mickeyMouse con una hierbaBuena y una pondsAntiAge debe producir los mismos resultados que aplicarle una hierbaBuena" $do
@@ -93,4 +93,6 @@ aplicarHastaQueDeFalse diagnostico raton hierba
 	| otherwise = raton
 
 
+ratisalil = [hierbaZort, hierbaMala]
 pondsAntiAge = [alcachofa 10 , hierbaBuena, hierbaBuena, hierbaBuena]
+
