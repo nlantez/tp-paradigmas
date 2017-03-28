@@ -11,8 +11,10 @@ runTests = hspec $do
 		it "el analisis de rango medio para el estudio de masa coporal con indices entre 18.5 y 25 de Jerry deberia dar negativo" $do
 			analisisRangoMedio estudioMasaCorporal jerry 18.5 25 `shouldBe` False
 	describe "Tests medicinas y operaciones:" $do
-		--it "mezclar una Hierba buena con una Hierba mala crea una hierba que no produce efecto"
-		--it ""
+		it "mezclar una Hierba buena con una Hierba mala crea una hierba que no produce efecto" $do
+			mezclarHierbas hierbaBuena hierbaMala jerry `shouldBe` jerry
+		it "mezclar una Hierba buena y una alcachofa 0 crea una hierba que produce el mismo efecto que una Hierba buena" $do
+			mezclarHierbas hierbaBuena (alcachofa 0) jerry `shouldBe` hierbaBuena jerry
 		it  "el medicamento ratisalil combina una Hierba hierbaMala y una Hierba Zort que produce los mismos resultados que una Hierba Zort" $do
 			medicamento jerry [hierbaZort,hierbaMala] `shouldBe` medicamento jerry [hierbaZort]
 		it "el medicamento ponds anti age combina una alcachofa de 10 con 3 hierbas buenas que se le aplica a jerry quedando con edad = 9.5, peso = 1.8 y altura = 0.3" $do
