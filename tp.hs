@@ -24,6 +24,7 @@ runTests = hspec $do
 
 
 
+
 data Raton = CRaton {edad :: Float, peso :: Float, altura :: Float }deriving (Show,Eq)
 
 mickeyMouse = CRaton 88 20 0.8
@@ -70,6 +71,12 @@ envejecerRaton = (*2)
 reducirPeso:: Float -> Float -> Float
 reducirPeso porcentaje peso = peso - ((porcentaje * peso)/100)
 
+
+type Hierba = Raton -> Raton 
+mezclarHierbas :: Hierba -> Hierba -> Hierba
+mezclarHierbas = (.)
+
+medicamento :: Raton -> [(Raton -> Raton)] -> Raton
 medicamento raton hierbas = foldl tomarHierba raton hierbas
 
 tomarHierba :: Raton -> (Raton -> Raton) -> Raton
